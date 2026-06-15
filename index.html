@@ -1095,9 +1095,23 @@ if ('serviceWorker' in navigator) {
 // ═══════════════════════════════════════════════
 // INIT
 // ═══════════════════════════════════════════════
-(function init() {
+(async function init() {
   loadConfig();
   buildQuestionsUI();
+
+  // Pull env vars from Cloudflare Pages Function (/env).
+  // Falls back silently when running locally without a function.
+  try {
+    const r = await fetch('/env');
+    if (r.ok) {
+      const env = await r.json();
+      let merged = false;
+      if (env.claudeKey && !cfg.claudeKey) { cfg.claudeKey = env.claudeKey; merged = true; }
+      if (env.sbUrl    && !cfg.sbUrl)    { cfg.sbUrl    = env.sbUrl;     merged = true; }
+      if (env.sbKey    && !cfg.sbKey)    { cfg.sbKey    = env.sbKey;     merged = true; }
+      if (merged) localStorage.setItem('ia_cfg', JSON.stringify(cfg));
+    }
+  } catch(e) { /* local dev — no /env endpoint */ }
 
   if (cfg.claudeKey) {
     fillConfigForm();
