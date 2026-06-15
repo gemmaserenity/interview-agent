@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Cream background with rounded corners -->
+  <rect width="512" height="512" fill="#F5F0E8" rx="80"/>
+  
+  <!-- Mic capsule body (rounded rectangle) -->
+  <rect x="196" y="72" width="120" height="210" rx="60" fill="#1C1917"/>
+  
+  <!-- Grille lines on capsule -->
+  <line x1="196" y1="140" x2="316" y2="140" stroke="#F5F0E8" stroke-width="6" opacity="0.25"/>
+  <line x1="196" y1="162" x2="316" y2="162" stroke="#F5F0E8" stroke-width="6" opacity="0.25"/>
+  <line x1="196" y1="184" x2="316" y2="184" stroke="#F5F0E8" stroke-width="6" opacity="0.25"/>
+  <line x1="196" y1="206" x2="316" y2="206" stroke="#F5F0E8" stroke-width="6" opacity="0.25"/>
+  <line x1="196" y1="228" x2="316" y2="228" stroke="#F5F0E8" stroke-width="6" opacity="0.25"/>
+  
+  <!-- Stand arc (U-shape curving downward from mic) -->
+  <path d="M 148 270 A 108 100 0 0 0 364 270" 
+        stroke="#1C1917" stroke-width="22" fill="none" stroke-linecap="round"/>
+  
+  <!-- Neck: vertical stem -->
+  <line x1="256" y1="370" x2="256" y2="420" 
+        stroke="#1C1917" stroke-width="22" stroke-linecap="round"/>
+  
+  <!-- Base: horizontal bar -->
+  <line x1="190" y1="420" x2="322" y2="420" 
+        stroke="#1C1917" stroke-width="22" stroke-linecap="round"/>
+</svg>
