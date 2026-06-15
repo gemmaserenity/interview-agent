@@ -245,11 +245,11 @@
     }
     .msg { display: flex; flex-direction: column; gap: 4px; }
     .msg-role { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; }
-    .msg.agent .msg-role { color: var(--accent-d); }
-    .msg.user  .msg-role { color: var(--dim); }
+    .msg.agent .msg-role { color: var(--accent); }
+    .msg.user  .msg-role { color: var(--muted); }
     .msg-body { font-size: 15px; line-height: 1.75; }
     .msg.agent .msg-body { color: #f5f1ea; }
-    .msg.user  .msg-body { color: var(--muted); }
+    .msg.user  .msg-body { color: #c8c3bc; }
 
     .cue { font-size: 11px; color: var(--dim); font-style: italic; }
 
@@ -808,7 +808,11 @@ async function agentTurn() {
 
   } catch(err) {
     typingEl.remove();
-    addMessage('agent', `[Error: ${err.message}]`);
+    const errEl = document.createElement('div');
+    errEl.className = 'msg agent';
+    errEl.innerHTML = `<div class="msg-role">Interviewer</div><div class="msg-body" style="color:var(--red)">⚠ ${esc(err.message)}</div>`;
+    document.getElementById('messages').appendChild(errEl);
+    scrollBottom();
   }
 
   isAgentTyping = false;
